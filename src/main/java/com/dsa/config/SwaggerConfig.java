@@ -12,8 +12,8 @@ public class SwaggerConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("API de Personas")
+                        .title("API de inventario de sistemas")
                         .version("1.0")
-                        .description("Documentación de la API de Personas usando Swagger/OpenAPI."));
+                        .description("Documentación de la API de inventario de sistemas usando Swagger/OpenAPI."));
     }
 }
