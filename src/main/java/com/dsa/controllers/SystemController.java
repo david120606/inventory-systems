@@ -1,8 +1,8 @@
 package com.dsa.controllers;
 
-import com.dsa.entities.dto.System;
+import com.dsa.entities.schema.System;
 import com.dsa.entities.dto.SystemDTO;
-import com.dsa.entities.dto.enums.SystemStatus;
+import com.dsa.entities.enums.SystemStatus;
 import com.dsa.services.SystemService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

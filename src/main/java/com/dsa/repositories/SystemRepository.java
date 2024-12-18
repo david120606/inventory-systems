@@ -1,7 +1,7 @@
 package com.dsa.repositories;
 
-import com.dsa.entities.dto.System;
-import com.dsa.entities.dto.enums.SystemStatus;
+import com.dsa.entities.schema.System;
+import com.dsa.entities.enums.SystemStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

@@ -1,12 +1,9 @@
 package com.dsa.services;
 
-import com.dsa.entities.dto.System;
-import com.dsa.entities.dto.enums.SystemStatus;
+import com.dsa.entities.schema.System;
+import com.dsa.entities.enums.SystemStatus;
 import com.dsa.repositories.SystemRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class SystemService {

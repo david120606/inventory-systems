@@ -1,4 +1,4 @@
-package com.dsa.entities.dto.enums;
+package com.dsa.entities.enums;
 
 public enum SystemStatus {
     ACTIVE,

@@ -1,7 +1,9 @@
 package com.dsa.entities.dto;
 
-import com.dsa.entities.dto.enums.ArchitectureType;
-import com.dsa.entities.dto.enums.SystemStatus;
+import com.dsa.entities.enums.ArchitectureType;
+import com.dsa.entities.enums.SystemStatus;
+import com.dsa.entities.schema.System;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.*;
 import java.util.List;
