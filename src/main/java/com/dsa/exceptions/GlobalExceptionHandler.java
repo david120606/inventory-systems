@@ -54,10 +54,19 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGlobalExceptions(Exception ex) {
-        System.out.println(ex.getMessage());
         List<String> errors = new ArrayList<>();
         errors.add("Ocurrió un error inesperado. Inténtalo más tarde.");
         ErrorResponse response = new ErrorResponse(errors, true);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
+
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<ErrorResponse> handleBusinessExceptions(BusinessException ex) {
+        List<String> errors = new ArrayList<>();
+        errors.add(ex.getMessage());
+        ErrorResponse response = new ErrorResponse(errors, true);
+        return ResponseEntity.status(ex.getStatus()).body(response);
+    }
+
+
 }
