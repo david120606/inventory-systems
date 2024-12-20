@@ -7,6 +7,7 @@ import com.dsa.repositories.SystemRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import static com.dsa.config.LoggerApp.info;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
@@ -38,15 +39,11 @@ public class SystemService {
     }
 
     public void removeValidationSystem(Long id, String comment) {
-        if (comment == null || comment.trim().isEmpty()) {
-            throw new BusinessException("A validation comment is required to remove validation a system.", BAD_REQUEST);
-        }
         int rowsAffected = systemRepository.removeValidationSystem(id, comment);
         if (rowsAffected == 0) {
             throw new BusinessException("System with ID " + id + " not found.", NOT_FOUND);
         }
     }
-
 
 
 }

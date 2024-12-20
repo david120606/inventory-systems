@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.dsa.config.LoggerApp.info;
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -61,6 +63,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ErrorResponse> handleBusinessExceptions(BusinessException ex) {
+        info("{}", ex.getMessage());
         List<String> errors = new ArrayList<>();
         errors.add(ex.getMessage());
         ErrorResponse response = new ErrorResponse(errors, true);
