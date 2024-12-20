@@ -69,6 +69,12 @@ public class System {
     @Column(length = 500)
     private String comments;
 
+    @Column(nullable = false)
+    private Boolean validated;
+
+    @Column(length = 500)
+    private String validationComment;
+
     public Long getId() {
         return id;
     }
@@ -203,5 +209,13 @@ public class System {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public Boolean getValidated() {
+        return validated;
+    }
+
+    public void setValidated(Boolean validated) {
+        this.validated = validated;
     }
 }

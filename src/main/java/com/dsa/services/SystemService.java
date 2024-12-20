@@ -25,4 +25,21 @@ public class SystemService {
         }
     }
 
+    public void validateSystem(Long id) {
+        int rowsAffected = systemRepository.validateSystem(id);
+        if (rowsAffected == 0) {
+            throw new IllegalArgumentException("System with ID " + id + " not found");
+        }
+    }
+
+    public void removeValidationSystem(Long id, String comment) {
+        if (comment == null || comment.trim().isEmpty()) {
+            throw new IllegalArgumentException("A validation comment is required to remove validation a system.");
+        }
+        int rowsAffected = systemRepository.removeValidationSystem(id, comment);
+        if (rowsAffected == 0) {
+            throw new IllegalArgumentException("System with ID " + id + " not found.");
+        }
+    }
+
 }

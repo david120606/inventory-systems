@@ -16,4 +16,15 @@ public interface SystemRepository extends JpaRepository<System, Long> {
     @Modifying
     @Query("UPDATE System s SET s.status = :status WHERE s.id = :id")
     int updateSystemStatus(@Param("id") Long id, @Param("status") SystemStatus status);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE System s SET s.validated = true WHERE s.id = :id")
+    int validateSystem(@Param("id") Long id);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE System s SET s.validated = false, s.validationComment = :comment WHERE s.id = :id")
+    int removeValidationSystem(@Param("id") Long id, @Param("comment") String comment);
+
 }

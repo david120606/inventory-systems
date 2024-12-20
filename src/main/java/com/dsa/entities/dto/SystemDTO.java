@@ -5,6 +5,7 @@ import com.dsa.entities.enums.SystemStatus;
 import com.dsa.entities.schema.System;
 import io.swagger.v3.oas.annotations.media.Schema;
 
+import javax.persistence.Column;
 import javax.validation.constraints.*;
 import java.util.List;
 
@@ -57,6 +58,8 @@ public class SystemDTO {
     @Size(max = 500, message = "Comments cannot exceed 500 characters")
     private String comments;
 
+    @Size(max = 500, message = "Comments cannot exceed 500 characters")
+    private String validationComment;
 
     public SystemDTO() {
     }

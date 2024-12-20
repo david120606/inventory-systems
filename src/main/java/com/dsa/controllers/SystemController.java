@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/inventory")
@@ -20,7 +21,6 @@ public class SystemController {
     public SystemController(SystemService systemService) {
         this.systemService = systemService;
     }
-
 
     @PostMapping("/system")
     @Operation(summary = "Crea un sistema", description = "Crea un nuevo sistema en el inventario")
@@ -36,6 +36,20 @@ public class SystemController {
         return ResponseEntity.ok("System status updated successfully");
     }
 
+    @PatchMapping("/system/{id}/validate")
+    public ResponseEntity<String> validateSystem(@PathVariable Long id) {
+        systemService.validateSystem(id);
+        return ResponseEntity.ok("System validated successfully");
+    }
+    @PatchMapping("/system/{id}/invalidate")
+    public ResponseEntity<String> removeValidationSystem(
+            @PathVariable Long id,
+            @RequestBody Map<String, String> requestBody
+    ) {
+        String comment = requestBody.get("comment");
+        systemService.removeValidationSystem(id, comment);
+        return ResponseEntity.ok("System unvalidated successfully");
+    }
 
 }
 
