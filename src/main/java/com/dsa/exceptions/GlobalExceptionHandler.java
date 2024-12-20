@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    // Clase de respuesta estandarizada
     public static class ErrorResponse {
         private List<String> message;
         private boolean error;
