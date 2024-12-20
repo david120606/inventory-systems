@@ -11,26 +11,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.dsa.config.LoggerApp.info;
-
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
     public static class ErrorResponse {
-        private List<String> message;
+        private List<String> messages;
         private boolean error;
 
-        public ErrorResponse(List<String> message, boolean error) {
-            this.message = message;
+        public ErrorResponse(List<String> messages, boolean error) {
+            this.messages = messages;
             this.error = error;
         }
 
-        public List<String> getMessage() {
-            return message;
+        public List<String> getMessages() {
+            return messages;
         }
 
-        public void setMessage(List<String> message) {
-            this.message = message;
+        public void setMessages(List<String> messages) {
+            this.messages = messages;
         }
 
         public boolean isError() {
@@ -63,7 +61,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ErrorResponse> handleBusinessExceptions(BusinessException ex) {
-        info("{}", ex.getMessage());
         List<String> errors = new ArrayList<>();
         errors.add(ex.getMessage());
         ErrorResponse response = new ErrorResponse(errors, true);

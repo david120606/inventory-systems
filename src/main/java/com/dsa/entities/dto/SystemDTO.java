@@ -3,9 +3,7 @@ package com.dsa.entities.dto;
 import com.dsa.entities.enums.ArchitectureType;
 import com.dsa.entities.enums.SystemStatus;
 import com.dsa.entities.schema.System;
-import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.persistence.Column;
 import javax.validation.constraints.*;
 import java.util.List;
 
