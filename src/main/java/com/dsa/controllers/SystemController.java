@@ -9,6 +9,7 @@ import com.dsa.services.SystemService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -37,18 +38,21 @@ public class SystemController {
     }
 
     @PatchMapping("/system/{id}/status")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> updateStatus(@PathVariable Long id, @RequestParam SystemStatus status) {
         systemService.updateStatus(id, status);
         return ResponseEntity.ok("System status updated successfully");
     }
 
     @PatchMapping("/system/{id}/validate")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> validateSystem(@PathVariable Long id) {
         systemService.validateSystem(id);
         return ResponseEntity.ok("System validated successfully");
     }
 
     @PatchMapping("/system/{id}/invalidate")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> removeValidationSystem(
             @PathVariable Long id,
             @Valid @RequestBody CommentInvalid commentInvalid
