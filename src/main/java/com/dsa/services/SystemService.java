@@ -4,11 +4,10 @@ import com.dsa.entities.schema.System;
 import com.dsa.entities.enums.SystemStatus;
 import com.dsa.exceptions.BusinessException;
 import com.dsa.repositories.SystemRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import static com.dsa.config.LoggerApp.info;
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import java.util.List;
+
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
@@ -45,5 +44,9 @@ public class SystemService {
         }
     }
 
+
+    public List<System> findByStatus(SystemStatus status) {
+        return systemRepository.findByStatus(status);
+    }
 
 }

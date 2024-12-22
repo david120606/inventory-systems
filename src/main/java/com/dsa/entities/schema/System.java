@@ -2,10 +2,10 @@ package com.dsa.entities.schema;
 
 import com.dsa.entities.enums.ArchitectureType;
 import com.dsa.entities.enums.SystemStatus;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 

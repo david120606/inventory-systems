@@ -4,7 +4,6 @@ import com.dsa.entities.dto.CommentInvalid;
 import com.dsa.entities.schema.System;
 import com.dsa.entities.dto.SystemDTO;
 import com.dsa.entities.enums.SystemStatus;
-import com.dsa.exceptions.BusinessException;
 import com.dsa.services.SystemService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -13,11 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Map;
-
-import static com.dsa.config.LoggerApp.error;
-import static com.dsa.config.LoggerApp.info;
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/inventory")
@@ -59,6 +54,11 @@ public class SystemController {
     ) {
         systemService.removeValidationSystem(id, commentInvalid.getComment());
         return ResponseEntity.ok("System unvalidated successfully");
+    }
+
+    @GetMapping("/system/status/{status}")
+    public List<System> getSystemsByStatus(@PathVariable SystemStatus status) {
+        return systemService.findByStatus(status);
     }
 
 }
