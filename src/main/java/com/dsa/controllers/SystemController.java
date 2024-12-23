@@ -12,7 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/inventory")
@@ -56,9 +56,25 @@ public class SystemController {
         return ResponseEntity.ok("System unvalidated successfully");
     }
 
-    @GetMapping("/system/status/{status}")
-    public List<System> getSystemsByStatus(@PathVariable SystemStatus status) {
-        return systemService.findByStatus(status);
+    @GetMapping("/system/status/{status}/next")
+    public ResponseEntity<Map<String, Object>> getNextByStatus(
+            @PathVariable SystemStatus status,
+            @RequestParam(required = false) Long lastId,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        Map<String, Object> response = systemService.nextPageByStatus(status, lastId, size);
+        return ResponseEntity.ok(response);
+    }
+
+
+    @GetMapping("/system/status/{status}/previous")
+    public ResponseEntity<Map<String, Object>> getPreviousByStatus(
+            @PathVariable SystemStatus status,
+            @RequestParam Long firstId,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        Map<String, Object> response = systemService.previousPageByStatus(status, firstId, size);
+        return ResponseEntity.ok(response);
     }
 
 }
